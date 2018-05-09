@@ -1,0 +1,10 @@
+This is a scratch-pad for me to store notes in.  It will maybe be reformatted
+at a later time.
+
+Preparing Packer:
+  -Using HyperV as the VM Backend
+  -Outputting VagrantBox as the Output
+  -Prepare a Kickstart File to feed to Centos7 boot
+
+Vagrant Build:
+  -Container Linux Scripts

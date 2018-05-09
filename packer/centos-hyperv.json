@@ -1,0 +1,27 @@
+{
+  "variables": {
+    "my_var": "centos-hyperv"
+  },
+  "builders": [
+    {
+      "type": "hyperv-iso",
+      "generation": "2",
+      "enable_secure_boot": "false",
+      "name": "{{user `my_var}}",
+      "vm_name": "{{user `my_var}}",
+      "guest_additions_mode": "disabled",
+      "iso_url": "../local-data/centos7.ios",
+      "cpu": "2",
+      "ram_size": "1024",
+      "disk_size": "8192",
+      "communicator": "ssh",
+      "boot_wait": "30s",
+      "ssh_timeout": "4h"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant"
+    }
+  ]
+}
