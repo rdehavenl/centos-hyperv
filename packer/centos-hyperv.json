@@ -10,7 +10,7 @@
       "name": "{{user `my_var`}}",
       "vm_name": "{{user `my_var`}}",
       "guest_additions_mode": "disabled",
-      "iso_url": "../local-data/centos7.ios",
+      "iso_url": "../local-data/centos7.iso",
       "iso_checksum_type": "md5",
       "iso_checksum": "5848F2FD31C7ACF3811AD88EACA6F4AA",
       "cpu": "2",
