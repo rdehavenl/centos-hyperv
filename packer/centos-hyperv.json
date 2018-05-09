@@ -11,6 +11,7 @@
       "vm_name": "{{user `my_var`}}",
       "guest_additions_mode": "disabled",
       "iso_url": "../local-data/centos7.iso",
+      "http_directory": "./boot",
       "iso_checksum_type": "md5",
       "iso_checksum": "5848F2FD31C7ACF3811AD88EACA6F4AA",
       "cpu": "2",
@@ -20,6 +21,11 @@
       "ssh_username": "packer",
       "ssh_password": "bogus",
       "boot_wait": "30s",
+      "boot_command": [
+        "<esc><wait>",
+        "linux ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg",
+        "<enter><wait>"
+      ],
       "ssh_timeout": "4h"
     }
   ],
