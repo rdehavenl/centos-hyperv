@@ -16,20 +16,20 @@
       "iso_url": "../local-data/centos7.iso",
       "http_directory": "./boot",
       "iso_checksum_type": "md5",
-      "iso_checksum": "5848F2FD31C7ACF3811AD88EACA6F4AA",
+      "iso_checksum": "660aab9894136872770ecb6e1e370c08",
       "cpu": "2",
       "ram_size": "1024",
       "disk_size": "8192",
       "communicator": "ssh",
-      "ssh_username": "packer",
-      "ssh_password": "bogus",
-      "boot_wait": "10s",
+      "ssh_username": "root",
+      "ssh_password": "packer",
+      "boot_wait": "5s",
       "boot_command": [
-        "c  setparams 'kickstart' <enter>",
+        "c  setparams 'kickstart'<enter>",
         "linuxefi /images/pxeboot/vmlinuz inst.stage2=hd:LABEL=CentOS\\x207\\x20x\\86_64",
-          " inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter>",
+          " inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg fips=1 <enter>",
         "initrdefi /images/pxeboot/initrd.img<enter>",
-        "boot<enter>"
+        "boot <enter>"
       ],
       "shutdown_command": "shutdown -h now",
       "ssh_timeout": "4h"
