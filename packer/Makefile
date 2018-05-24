@@ -1,4 +1,17 @@
+.SILENT:
+
 win-test:
-	echo "Hello from Test"
-	for /f "tokens=2-4 delims=/ " %%a in ('date /t') do (set mydate=%%c-%%a-%%b)
-	echo "Today's Date is %mydate%"
+	vagrant up
+
+win-build:
+    echo "===Validating Template==="
+	packer validate -machine-readable centos-hyperv.json
+	echo "=== [PASS] ===" && echo.
+	echo "===Packer Building==="
+	packer build -machine-readable -color=false centos-hyperv.json
+	echo "=== [DONE] ==="
+
+help:
+	echo "This is help file"
+
+.DEFAULT: help

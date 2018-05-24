@@ -1,12 +1,15 @@
 {
   "variables": {
-    "my_var": "centos-hyperv"
+    "my_var": "centos-hyperv",
+    "hyperv_switch": "Default Switch"
   },
+  
   "builders": [
     {
       "type": "hyperv-iso",
       "generation": "2",
       "enable_secure_boot": "false",
+      "switch_name": "{{user `hyperv_switch`}}",
       "name": "{{user `my_var`}}",
       "vm_name": "{{user `my_var`}}",
       "guest_additions_mode": "disabled",
@@ -20,12 +23,15 @@
       "communicator": "ssh",
       "ssh_username": "packer",
       "ssh_password": "bogus",
-      "boot_wait": "30s",
+      "boot_wait": "10s",
       "boot_command": [
-        "<esc><wait>",
-        "linux ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg",
-        "<enter><wait>"
+        "c  setparams 'kickstart' <enter>",
+        "linuxefi /images/pxeboot/vmlinuz inst.stage2=hd:LABEL=CentOS\\x207\\x20x\\86_64",
+          " inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter>",
+        "initrdefi /images/pxeboot/initrd.img<enter>",
+        "boot<enter>"
       ],
+      "shutdown_command": "shutdown -h now",
       "ssh_timeout": "4h"
     }
   ],
