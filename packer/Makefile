@@ -9,16 +9,14 @@ packer-validate:
 	echo.
 
 win-dev: packer-validate
-	echo "===Packer Building==="
-	packer build -machine-readable -color=false -on-error=ask centos-hyperv.json
+	echo "===Packer Building (Ask on Clean-up)==="
+	packer build -machine-readable -color=false centos-hyperv.json
 	echo "=== [DONE] ==="
 
 win-build: packer-validate
     echo "===Packer Building==="
 	packer build -machine-readable -color=false centos-hyperv.json
 	echo "=== [DONE] ==="
-
-
 
 help:
 	echo "This is help file"
