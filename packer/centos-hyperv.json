@@ -40,13 +40,20 @@
       "type": "shell",
       "inline": [
         "echo Hello World!!!",
-        "date +%Y-%m-%d %H:%M:%s"
+        "date +\"%Y-%m-%d %H:%M:%s\""
+      ]
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "boot/scripts/setup-vagrant.sh"
       ]
     }
   ],
   "post-processors": [
     {
-      "type": "vagrant"
+      "type": "vagrant",
+      "output": "../local-data/output-boxes/centos7_hyperv.box"
     }
   ]
 }
