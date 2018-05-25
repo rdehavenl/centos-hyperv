@@ -8,24 +8,30 @@ packer-validate:
 	packer validate -machine-readable centos-hyperv.json
 	echo.
 
-vagrant-cleanup:
-    echo "===Vagrant Cleanup==="
-    vagrant destroy -f
-	vagrant box remove rld-test-box -f
-	echo.
+packer-logging:
+    set PACKER_LOG=1
 
-win-dev: vagrant-cleanup packer-validate
-	echo "===Packer Building (Dev)==="
-	set PACKER_LOG=1
-	packer build -machine-readable -color=false centos-hyperv.json
-	echo "=== [DONE] ==="
-
-win-build: vagrant-cleanup packer-validate
+packer-build:
     echo "===Packer Building==="
 	packer build -machine-readable -color=false centos-hyperv.json
 	echo "=== [DONE] ==="
 
+vagrant-cleanup:
+    echo "===Vagrant Cleanup==="
+    vagrant destroy -f
+	-vagrant box remove rld-test-box -f
+	echo.
+
+vagrant-run:
+    echo "===Register and Run Box==="
+	vagrant box add ../local-data/output-boxes/centos7_hyperv.box --name rld-test-box
+	vagrant up
+
+win-dev: vagrant-cleanup packer-validate packer-logging packer-build vagrant-run
+
+win-build: vagrant-cleanup packer-validate packer-build vagrant-run
+
 help:
 	echo "This is help file"
 
-.DEFAULT: help
+.DEFAULT: win-build
