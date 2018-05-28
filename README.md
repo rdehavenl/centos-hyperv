@@ -24,10 +24,10 @@ This repo created built on a Windows 10 (1803) platform.
 ## Usage
 Coming from a unix background, I'm a huge fan of doing sudo-automation with
 Makefiles.  Therefore the usage is pretty simple: 
-    ```
-    cd packer
-    nmake win-build
-    ```
+```
+cd packer
+nmake win-build
+```
 
 If Packer builds are failing and you need more output during the build, you can
 use the `nmake win-dev` command to run packer with more logging
