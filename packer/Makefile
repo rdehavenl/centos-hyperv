@@ -19,12 +19,12 @@ packer-build:
 vagrant-cleanup:
     echo "===Vagrant Cleanup==="
     vagrant destroy -f
-	-vagrant box remove rld-test-box -f
+	-vagrant box remove centos7-hyperv2 -f
 	echo.
 
 vagrant-run:
     echo "===Register and Run Box==="
-	vagrant box add ../local-data/output-boxes/centos7_hyperv.box --name rld-test-box
+	vagrant box add ../local-data/output-boxes/centos7_hyperv.box --name centos7-hyperv2
 	vagrant up
 
 win-dev: vagrant-cleanup packer-validate packer-logging packer-build vagrant-run
