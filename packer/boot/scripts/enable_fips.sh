@@ -20,6 +20,10 @@ fix_prelink(){
     
 }
 
+fix_sshd(){
+    
+}
+
 check_fips(){
 
 }
@@ -27,4 +31,9 @@ check_fips(){
 check_prelink(){
 
 }
+
+check_sshd(){
+
+}
+
 
