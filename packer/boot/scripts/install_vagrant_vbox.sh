@@ -7,6 +7,9 @@
 #
 ###
 
+set -x
+set -e
+
 yum_cmd="yum -y"
 vbox_repo_url="http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo"
 vbox_version="5.2"
