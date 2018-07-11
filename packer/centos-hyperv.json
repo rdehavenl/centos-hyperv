@@ -48,6 +48,12 @@
       "scripts": [
         "boot/scripts/setup-vagrant.sh"
       ]
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "boot/scripts/install_vagrant_vbox.sh"
+      ]
     }
   ],
   "post-processors": [
