@@ -1,4 +1,5 @@
 .SILENT:
+.DEFAULT: win-build
 
 win-test:
 	vagrant up
@@ -34,4 +35,3 @@ win-build: vagrant-cleanup packer-validate packer-build vagrant-run
 help:
 	echo "This is help file"
 
-.DEFAULT: win-build
